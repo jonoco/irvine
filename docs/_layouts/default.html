@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  {% include navigation.html %}
+  <main>
+    <div class="procedures">
+      {% for proc in site.procedures %}
+        <div class="procedure" id="{{ proc.title }}">
+          <h2>{{ proc.title }}</h2>
+          <p>receives: {{ proc.receives }}</p>
+          <p>returns: {{ proc.returns }}</p>
+          {{ proc.content | markdownify }}
+        </div><!-- #titleprocedure -->
+      {% endfor %}
+    </div><!-- procedures -->
+  </main>
+</body>
+</html>

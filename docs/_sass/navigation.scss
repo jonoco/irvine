@@ -1,0 +1,36 @@
+#navigation {
+  align-items: center;
+  background: #ddd;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10vh;
+
+  .current {
+
+  }
+
+  .navlink {
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+
+    &:hover {
+      background: #888;
+      color: #eee;
+    }
+  }
+
+  .navlink {
+
+  }
+
+  hr {
+    border: 1px solid #ccc;
+    width: 80%;
+  }
+
+  a {
+    color: #222;
+    font-size: 20px;
+  }
+}
