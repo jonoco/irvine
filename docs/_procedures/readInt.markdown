@@ -1,11 +1,16 @@
 ---
 layout: default
 title: ReadInt
-summary: Read a signed integer to from input.
+summary: Reads a 32-bit signed integer from the keyboard.
 receives: None
-returns: EAX
+returns: 
+    - EAX = integer
 ---
 {% highlight asm %}
-mov eax, number
-call WriteDec
+.data
+intVal SDWORD ?
+
+.code
+call ReadInt
+mov  intVal,eax
 {% endhighlight %}

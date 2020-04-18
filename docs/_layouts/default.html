@@ -12,9 +12,30 @@
       {% for proc in site.procedures %}
         <div class="procedure" id="{{ proc.title }}">
           <h2>{{ proc.title }}</h2>
-          <p>receives: {{ proc.receives }}</p>
-          <p>returns: {{ proc.returns }}</p>
-          {{ proc.content | markdownify }}
+          <p class="summary">{{ proc.summary }}</h3>
+
+          <div class="receives">
+            <em>receives: </em>
+            <ul>
+              {% for ret in proc.receives %}
+                <li>{{ proc.receives }}</li>
+              {% endfor %}
+            </ul>
+          </div> <!-- receives -->
+
+          <div class="returns">
+            <em>returns: </em>
+            <ul>
+              {% for ret in proc.returns %}
+                <li>{{ ret }}</li>
+              {% endfor %}
+            </ul>
+          </div> <!-- returns -->
+
+          <div class="example">
+            Example code:
+            {{ proc.content | markdownify }}
+          </div>
         </div><!-- #titleprocedure -->
       {% endfor %}
     </div><!-- procedures -->

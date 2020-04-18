@@ -1,11 +1,15 @@
 ---
 layout: default
 title: WriteString
-summary: Displays a string to output.
-receives: EDX
+summary: Writes a null-terminated string to output.
+receives: EDX = address of string
 returns: None
 ---
-{% highlight asm %}
-mov edx, offset myString
+{% highlight nasm %}
+.data
+prompt BYTE "Enter your name: ",0
+
+.code
+mov  edx,OFFSET prompt
 call WriteString
 {% endhighlight %}
