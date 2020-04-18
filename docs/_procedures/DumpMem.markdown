@@ -2,10 +2,10 @@
 layout: default
 title: DumpMem
 summary: Writes a range of memory to the console window in hexadecimal.
-receives: 
+receives:
     - ESI = starting address
     - ECX = number of units
-    - EBX = unit size ; 1 = byte, 2 = word, ...
+    - EBX = unit size (1,2, or 4)
 returns: None
 ---
 {% highlight nasm %}

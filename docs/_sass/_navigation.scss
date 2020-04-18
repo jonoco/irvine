@@ -12,20 +12,19 @@
     flex-direction: column;
     align-items: center;
     overflow: scroll;
-    padding-left: 100px;
     padding-bottom: 15vh;
-    width: 100%;
+    width: 80%;
   }
 
   .navlink {
     margin-bottom: 10px;
-    padding-left: 8px;
+    padding-left: 100px;
     text-align: left;
     width: 100%;
 
     &:hover {
       background: #888;
-      color: #eee;
+      color: #fff;
     }
   }
 
