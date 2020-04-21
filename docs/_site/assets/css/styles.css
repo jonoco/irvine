@@ -15,17 +15,13 @@ body {
   flex-direction: row;
   font-family: 'Montserrat', sans-serif; }
 
-main {
-  left: 30vw;
-  width: 70vw;
-  height: 100vh;
-  position: relative; }
+aside {
+  width: 30vw;
+  height: 100vh; }
 
-nav {
-  top: 0;
-  height: 100vh;
-  position: fixed;
-  width: 30vw; }
+main {
+  width: 70vw;
+  height: 100vh; }
 
 a {
   text-decoration: none;
@@ -34,32 +30,16 @@ a {
 /*
   Layouts
  */
-.procedures {
-  margin: 50px 50px 300px 50px; }
-
-.procedure {
-  margin-bottom: 30px; }
-  .procedure h2 {
-    color: #222;
-    font-size: 1.7em; }
-  .procedure ul {
-    list-style: none;
-    margin: 0; }
-  .procedure .procedure-body {
-    margin-left: 30px; }
-  .procedure .example {
-    margin-top: 8px; }
-  .procedure .receives, .procedure .returns {
-    margin: 0 0 2px 15px; }
-
 /*
   Includes
  */
 #navigation {
+  top: 0;
+  height: 80vh;
+  position: fixed;
   align-items: center;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   padding-top: 10vh;
   text-justify: center; }
   #navigation .links {
@@ -67,8 +47,7 @@ a {
     flex-direction: column;
     align-items: center;
     overflow: scroll;
-    padding-bottom: 15vh;
-    width: 80%; }
+    width: 100%; }
   #navigation .navlink {
     margin-bottom: 10px;
     padding-left: 100px;
@@ -83,6 +62,25 @@ a {
   #navigation a {
     color: #222;
     text-justify: center; }
+
+#procedures {
+  margin: 50px 50px 300px 50px; }
+  #procedures .procedure {
+    margin-bottom: 32px; }
+    #procedures .procedure h2 {
+      color: #222;
+      font-size: 1.7em; }
+    #procedures .procedure ul {
+      list-style: none;
+      margin: 0; }
+    #procedures .procedure .procedure-body {
+      margin-left: 32px; }
+    #procedures .procedure .example {
+      margin-top: 16px; }
+      #procedures .procedure .example span {
+        color: #222; }
+    #procedures .procedure .receives, #procedures .procedure .returns {
+      margin: 0 0 2px 16px; }
 
 /*
   Pages

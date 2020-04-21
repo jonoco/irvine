@@ -10,18 +10,14 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-main {
-  left: 30vw;
-  width: 70vw;
+aside {
+  width: 30vw;
   height: 100vh;
-  position: relative;
 }
 
-nav {
-  top: 0;
+main {
+  width: 70vw;
   height: 100vh;
-  position: fixed;
-  width: 30vw;
 }
 
 a {

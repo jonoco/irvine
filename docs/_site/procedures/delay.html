@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <title>Irvine Library</title>
-  <link rel="stylesheet" href="/irvine/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
-  <nav id="navigation">
-  <a href="https://jonoco.github.io/irvine/">Top</a>
+  <aside>
+    <nav id="navigation">
+  <a href="http://localhost:4000">Top</a>
   <hr>
   <div class="links">
     
@@ -95,100 +96,101 @@
     
   </div>
 </nav>
+  </aside>
   <main>
-    <div class="procedures">
-      
-        <div class="procedure" id="CloseFile">
-          <h2>CloseFile</h2>
-          <div class="procedure-body">
-            <p class="summary">Closes a disk file that was previously opened.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EAX = file handle</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    <div id="procedures">
+  
+    <div class="procedure" id="CloseFile">
+      <h2>CloseFile</h2>
+      <div class="procedure-body">
+        <p class="summary">Closes a disk file that was previously opened.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = file handle</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = return code ; nonzero if file closed successfully</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = return code ; nonzero if file closed successfully</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              
+        <div class="example">
+          <span>Example code:</span>
+          
 <figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">mov</span>  <span class="n">eax</span><span class="p">,</span><span class="n">fileHandle</span>
 <span class="k">call</span> <span class="n">CloseFile</span></code></pre></figure>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="Clrscr">
-          <h2>Clrscr</h2>
-          <div class="procedure-body">
-            <p class="summary">Clears the console window</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="Clrscr">
+      <h2>Clrscr</h2>
+      <div class="procedure-body">
+        <p class="summary">Clears the console window</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              
+        <div class="example">
+          <span>Example code:</span>
+          
 <figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">call</span> <span class="n">WaitMsg</span>        <span class="c">; "Press any key..."</span>
 <span class="k">call</span> <span class="n">Clrscr</span></code></pre></figure>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="CloseFile">
-          <h2>CloseFile</h2>
-          <div class="procedure-body">
-            <p class="summary">Creates a new disk file for writing in output mode.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EDX = address of filename</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="CloseFile">
+      <h2>CloseFile</h2>
+      <div class="procedure-body">
+        <p class="summary">Creates a new disk file for writing in output mode.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EDX = address of filename</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = file handle if successful, or INVALID_HANDLE_VALUE if not</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = file handle if successful, or INVALID_HANDLE_VALUE if not</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              
+        <div class="example">
+          <span>Example code:</span>
+          
 <figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
 <span class="n">filename</span> <span class="n">BYTE</span> <span class="s">"newfile.txt"</span><span class="p">,</span><span class="mi">0</span>
 
@@ -196,105 +198,105 @@
 <span class="k">mov</span>  <span class="n">edx</span><span class="p">,</span><span class="n">OFFSET</span> <span class="n">filename</span>
 <span class="k">call</span> <span class="n">CreateOutputFile</span></code></pre></figure>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="Crlf">
-          <h2>Crlf</h2>
-          <div class="procedure-body">
-            <p class="summary">Writes an end-of-line sequence to the console window.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="Crlf">
+      <h2>Crlf</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes an end-of-line sequence to the console window.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              
+        <div class="example">
+          <span>Example code:</span>
+          
 <figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">call</span> <span class="n">Crlf</span></code></pre></figure>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="Delay">
-          <h2>Delay</h2>
-          <div class="procedure-body">
-            <p class="summary">Pauses the program for a number of milliseconds.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EAX = number of milliseconds</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="Delay">
+      <h2>Delay</h2>
+      <div class="procedure-body">
+        <p class="summary">Pauses the program for a number of milliseconds.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = number of milliseconds</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              
+        <div class="example">
+          <span>Example code:</span>
+          
 <figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">mov</span>  <span class="n">eax</span><span class="p">,</span><span class="mi">1000</span>       <span class="c">; 1 second</span>
 <span class="k">call</span> <span class="n">Delay</span></code></pre></figure>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="DumpMem">
-          <h2>DumpMem</h2>
-          <div class="procedure-body">
-            <p class="summary">Writes a range of memory to the console window in hexadecimal.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>ESI = starting address</li>
-                
-                  <li>ECX = number of units</li>
-                
-                  <li>EBX = unit size (1,2, or 4)</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="DumpMem">
+      <h2>DumpMem</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes a range of memory to the console window in hexadecimal.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>ESI = starting address</li>
+            
+              <li>ECX = number of units</li>
+            
+              <li>EBX = unit size (1,2, or 4)</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 array DWORD 1,2,3,4,5,6,7,8,9,0Ah,0Bh</p>
 
@@ -305,69 +307,69 @@ mov  ebx,TYPE array          ; doubleword format
 call DumpMem
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="DumpRegs">
-          <h2>DumpRegs</h2>
-          <div class="procedure-body">
-            <p class="summary">Displays the EAX, EBX, ECX, EDX, ESI, EDI, EBP, ESP, EIP, and EFL (EFLAGS) registers in hexadecimal.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="DumpRegs">
+      <h2>DumpRegs</h2>
+      <div class="procedure-body">
+        <p class="summary">Displays the EAX, EBX, ECX, EDX, ESI, EDI, EBP, ESP, EIP, and EFL (EFLAGS) registers in hexadecimal.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight asm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight asm %}
 call DumpRegs
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="GetCommandTail">
-          <h2>GetCommandTail</h2>
-          <div class="procedure-body">
-            <p class="summary">Copies the program’s command line into a null-terminated string.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EDX = address of array ; array must be at least 129 bytes</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="GetCommandTail">
+      <h2>GetCommandTail</h2>
+      <div class="procedure-body">
+        <p class="summary">Copies the program’s command line into a null-terminated string.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EDX = address of array ; array must be at least 129 bytes</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight asm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight asm %}
 .data
 cmdTail BYTE 129 DUP(0)     ; empty buffer</p>
 
@@ -376,38 +378,38 @@ mov  edx,OFFSET cmdTail
 call GetCommandTail         ; fills the buffer
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="GetMaxXY">
-          <h2>GetMaxXY</h2>
-          <div class="procedure-body">
-            <p class="summary">Gets the size of the console window’s buffer.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="GetMaxXY">
+      <h2>GetMaxXY</h2>
+      <div class="procedure-body">
+        <p class="summary">Gets the size of the console window’s buffer.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>DX = number of columns ; max 255</li>
-                
-                  <li>AX = number of rows ; max 255</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>DX = number of columns ; max 255</li>
+            
+              <li>AX = number of rows ; max 255</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 rows BYTE ?
 cols BYTE ?</p>
@@ -418,36 +420,36 @@ mov rows,al
 mov cols,dl
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="GetMseconds">
-          <h2>GetMseconds</h2>
-          <div class="procedure-body">
-            <p class="summary">Gets the number of milliseconds elapsed since midnight on the host computer.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="GetMseconds">
+      <h2>GetMseconds</h2>
+      <div class="procedure-body">
+        <p class="summary">Gets the number of milliseconds elapsed since midnight on the host computer.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = time in milliseconds</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = time in milliseconds</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
     startTime DWORD ?</p>
 
@@ -461,36 +463,36 @@ mov cols,dl
     sub  eax,startTime      ; EAX = loop time, in milliseconds
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="GetTextColor">
-          <h2>GetTextColor</h2>
-          <div class="procedure-body">
-            <p class="summary">Gets the current foreground and background colors of the console window.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="GetTextColor">
+      <h2>GetTextColor</h2>
+      <div class="procedure-body">
+        <p class="summary">Gets the current foreground and background colors of the console window.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>AL = color ; upper 4 bits = background, lower 4 bits = foreground</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>AL = color ; upper 4 bits = background, lower 4 bits = foreground</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 color byte ?</p>
 
@@ -499,109 +501,109 @@ call GetTextColor
 mov  color,AL
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="Gotoxy">
-          <h2>Gotoxy</h2>
-          <div class="procedure-body">
-            <p class="summary">Move the cursor at a given row and column in the console window.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>DH = X coordinate (column)</li>
-                
-                  <li>DL = Y coordinate (row)</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="Gotoxy">
+      <h2>Gotoxy</h2>
+      <div class="procedure-body">
+        <p class="summary">Move the cursor at a given row and column in the console window.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>DH = X coordinate (column)</li>
+            
+              <li>DL = Y coordinate (row)</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 mov  dh,10          ; row 10
 mov  dl,20          ; column 20
 call Gotoxy         ; locate cursor
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="IsDigit">
-          <h2>IsDigit</h2>
-          <div class="procedure-body">
-            <p class="summary">Determines whether the value in AL is the ASCII code for a valid decimal digit.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>AL = character</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="IsDigit">
+      <h2>IsDigit</h2>
+      <div class="procedure-body">
+        <p class="summary">Determines whether the value in AL is the ASCII code for a valid decimal digit.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>AL = character</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>Zero flag is set if valid digit, else clear</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>Zero flag is set if valid digit, else clear</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 mov  AL,somechar
 call IsDigit
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="MsgBox">
-          <h2>MsgBox</h2>
-          <div class="procedure-body">
-            <p class="summary">Displays a graphical popup message box with an optional caption.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EDX = address of message string</li>
-                
-                  <li>EBX = address of title string ; 0 for blank</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="MsgBox">
+      <h2>MsgBox</h2>
+      <div class="procedure-body">
+        <p class="summary">Displays a graphical popup message box with an optional caption.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EDX = address of message string</li>
+            
+              <li>EBX = address of title string ; 0 for blank</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 caption  BYTE “Dialog Title”, 0
 HelloMsg BYTE “This is a pop-up message box.”, 0dh,0ah 
@@ -613,38 +615,38 @@ mov  edx, OFFSET HelloMsg
 call MsgBox
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="MsgBoxAsk">
-          <h2>MsgBoxAsk</h2>
-          <div class="procedure-body">
-            <p class="summary">Displays a graphical popup message box with Yes and No buttons.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EDX = address of question string</li>
-                
-                  <li>EBX = address of title string ; 0 for blank</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="MsgBoxAsk">
+      <h2>MsgBoxAsk</h2>
+      <div class="procedure-body">
+        <p class="summary">Displays a graphical popup message box with Yes and No buttons.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EDX = address of question string</li>
+            
+              <li>EBX = address of title string ; 0 for blank</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = answer ; IDYES (6) or IDNO (7)</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = answer ; IDYES (6) or IDNO (7)</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 caption  BYTE “Survey Completed”,0
 question BYTE “Thank you for completing the survey.”
@@ -658,36 +660,36 @@ call MsgBoxAsk
 ;(check return value in EAX)
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="OpenInputFile">
-          <h2>OpenInputFile</h2>
-          <div class="procedure-body">
-            <p class="summary">Opens an existing file for input.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EDX = address of filename</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="OpenInputFile">
+      <h2>OpenInputFile</h2>
+      <div class="procedure-body">
+        <p class="summary">Opens an existing file for input.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EDX = address of filename</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = file handle ; INVALID_HANDLE_VALUE if file open failed</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = file handle ; INVALID_HANDLE_VALUE if file open failed</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 filename BYTE “myfile.txt”,0</p>
 
@@ -696,38 +698,38 @@ mov  edx,OFFSET filename
 call OpenInputFile
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="ParseDecimal32">
-          <h2>ParseDecimal32</h2>
-          <div class="procedure-body">
-            <p class="summary">Converts an unsigned decimal integer string to 32-bit binary.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EDX = address of string</li>
-                
-                  <li>ECX = length of string</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="ParseDecimal32">
+      <h2>ParseDecimal32</h2>
+      <div class="procedure-body">
+        <p class="summary">Converts an unsigned decimal integer string to 32-bit binary.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EDX = address of string</li>
+            
+              <li>ECX = length of string</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = parsed integer</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = parsed integer</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 buffer BYTE “8193”
 bufSize = ($ - buffer)</p>
@@ -738,38 +740,38 @@ mov  ecx,bufSize
 call ParseDecimal32 ; returns EAX
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="ParseInteger32">
-          <h2>ParseInteger32</h2>
-          <div class="procedure-body">
-            <p class="summary">Converts an signed decimal integer string to 32-bit binary.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EDX = address of string</li>
-                
-                  <li>ECX = length of string</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="ParseInteger32">
+      <h2>ParseInteger32</h2>
+      <div class="procedure-body">
+        <p class="summary">Converts an signed decimal integer string to 32-bit binary.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EDX = address of string</li>
+            
+              <li>ECX = length of string</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = parsed integer</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = parsed integer</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 buffer BYTE “-8193”
 bufSize = ($ - buffer)</p>
@@ -780,36 +782,36 @@ mov  ecx,bufSize
 call ParseInteger32 ; returns EAX
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="Random32">
-          <h2>Random32</h2>
-          <div class="procedure-body">
-            <p class="summary">Generates and returns a 32-bit random integer.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="Random32">
+      <h2>Random32</h2>
+      <div class="procedure-body">
+        <p class="summary">Generates and returns a 32-bit random integer.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = random integer</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = random integer</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 randVal DWORD ?</p>
 
@@ -818,36 +820,36 @@ call Random32
 mov  randVal,eax 
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="RandomRange">
-          <h2>RandomRange</h2>
-          <div class="procedure-body">
-            <p class="summary">Produces a random integer within a range.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EAX = upper limit (exclusive)</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="RandomRange">
+      <h2>RandomRange</h2>
+      <div class="procedure-body">
+        <p class="summary">Produces a random integer within a range.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = upper limit (exclusive)</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = random integer</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = random integer</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 randVal DWORD ?</p>
 
@@ -857,71 +859,71 @@ call RandomRange    ; generates 0 - 4999
 mov  randVal, eax
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="Randomize">
-          <h2>Randomize</h2>
-          <div class="procedure-body">
-            <p class="summary">Initializes the starting seed value of the Random32 and RandomRange procedures.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="Randomize">
+      <h2>Randomize</h2>
+      <div class="procedure-body">
+        <p class="summary">Initializes the starting seed value of the Random32 and RandomRange procedures.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight asm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight asm %}
 call Randomize
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="ReadChar">
-          <h2>ReadChar</h2>
-          <div class="procedure-body">
-            <p class="summary">Reads a single character from the keyboard.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>AL = character</li>
-                
-                  <li>AH = scan code (optional ; if extended key pressed)</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="ReadChar">
+      <h2>ReadChar</h2>
+      <div class="procedure-body">
+        <p class="summary">Reads a single character from the keyboard.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>AL = character</li>
+            
+              <li>AH = scan code (optional ; if extended key pressed)</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 char BYTE ?</p>
 
@@ -930,38 +932,38 @@ call ReadChar
 mov  char,al
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="ReadDec">
-          <h2>ReadDec</h2>
-          <div class="procedure-body">
-            <p class="summary">Reads a 32-bit unsigned decimal integer from the keyboard.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="ReadDec">
+      <h2>ReadDec</h2>
+      <div class="procedure-body">
+        <p class="summary">Reads a 32-bit unsigned decimal integer from the keyboard.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = unsigned integer</li>
-                
-                  <li>CF = 1 if value is zero or invalid, else 0</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = unsigned integer</li>
+            
+              <li>CF = 1 if value is zero or invalid, else 0</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 intVal DWORD ?</p>
 
@@ -970,42 +972,42 @@ call ReadDec
 mov  intVal,eax
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="ReadFromFile">
-          <h2>ReadFromFile</h2>
-          <div class="procedure-body">
-            <p class="summary">Reads an input disk file into a memory buffer.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EAX = open file handle</li>
-                
-                  <li>EDX = address of buffer</li>
-                
-                  <li>ECX = buffer size</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="ReadFromFile">
+      <h2>ReadFromFile</h2>
+      <div class="procedure-body">
+        <p class="summary">Reads an input disk file into a memory buffer.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = open file handle</li>
+            
+              <li>EDX = address of buffer</li>
+            
+              <li>ECX = buffer size</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = bytes read (CF = 0) or error (CF = 1)</li>
-                
-                  <li>CF = error indicator</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = bytes read (CF = 0) or error (CF = 1)</li>
+            
+              <li>CF = error indicator</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 BUFFER_SIZE = 5000
 buffer BYTE BUFFER_SIZE DUP(?)
@@ -1018,36 +1020,36 @@ mov  ecx, BUFFER_SIZE    ; max bytes to read
 call ReadFromFile        ; read the file
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="ReadHex">
-          <h2>ReadHex</h2>
-          <div class="procedure-body">
-            <p class="summary">Reads a 32-bit hexadecimal integer from the keyboard.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="ReadHex">
+      <h2>ReadHex</h2>
+      <div class="procedure-body">
+        <p class="summary">Reads a 32-bit hexadecimal integer from the keyboard.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = integer</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = integer</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight asm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight asm %}
 .data
 hexVal DWORD ?</p>
 
@@ -1056,36 +1058,36 @@ call ReadHex
 mov  hexVal,eax
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="ReadInt">
-          <h2>ReadInt</h2>
-          <div class="procedure-body">
-            <p class="summary">Reads a 32-bit signed integer from the keyboard.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="ReadInt">
+      <h2>ReadInt</h2>
+      <div class="procedure-body">
+        <p class="summary">Reads a 32-bit signed integer from the keyboard.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = integer</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = integer</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight asm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight asm %}
 .data
 intVal SDWORD ?</p>
 
@@ -1094,44 +1096,44 @@ call ReadInt
 mov  intVal,eax
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="ReadKey">
-          <h2>ReadKey</h2>
-          <div class="procedure-body">
-            <p class="summary">Performs a no-wait keyboard check to see if any key has been pressed.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="ReadKey">
+      <h2>ReadKey</h2>
+      <div class="procedure-body">
+        <p class="summary">Performs a no-wait keyboard check to see if any key has been pressed.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>AL = ASCII code or 0 (if special key)</li>
-                
-                  <li>AH = scan code (if AL = 0)</li>
-                
-                  <li>DX = virtual key code (if AL = 0)</li>
-                
-                  <li>EBX = keyboard flag bits (if AL = 0)</li>
-                
-                  <li>ZF = 0 (key pressed) or 1 (no key)</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>AL = ASCII code or 0 (if special key)</li>
+            
+              <li>AH = scan code (if AL = 0)</li>
+            
+              <li>DX = virtual key code (if AL = 0)</li>
+            
+              <li>EBX = keyboard flag bits (if AL = 0)</li>
+            
+              <li>ZF = 0 (key pressed) or 1 (no key)</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 pressedKey BYTE ?</p>
 
@@ -1143,40 +1145,40 @@ pressedKey BYTE ?</p>
 NoKey:
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="ReadString">
-          <h2>ReadString</h2>
-          <div class="procedure-body">
-            <p class="summary">Reads a string from the keyboard, stopping when the user presses the Enter key.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EDX = address of buffer</li>
-                
-                  <li>ECX = buffer size</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="ReadString">
+      <h2>ReadString</h2>
+      <div class="procedure-body">
+        <p class="summary">Reads a string from the keyboard, stopping when the user presses the Enter key.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EDX = address of buffer</li>
+            
+              <li>ECX = buffer size</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EDX = address of user string</li>
-                
-                  <li>EAX = number of characters entered</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EDX = address of user string</li>
+            
+              <li>EAX = number of characters entered</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 buffer    BYTE 21 DUP(0) ; input buffer
 byteCount DWORD ?        ; holds counter</p>
@@ -1188,36 +1190,36 @@ call ReadString          ; input the string
 mov  byteCount,eax       ; number of characters
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="SetTextColor">
-          <h2>SetTextColor</h2>
-          <div class="procedure-body">
-            <p class="summary">Sets the foreground and background colors for text output.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EAX = colors</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="SetTextColor">
+      <h2>SetTextColor</h2>
+      <div class="procedure-body">
+        <p class="summary">Sets the foreground and background colors for text output.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = colors</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 ; foreground color + (background color x 16)
 mov eax, white + (blue * 16)   ; white on blue
 call SetTextColor
@@ -1243,36 +1245,36 @@ call SetTextColor
   <li>white  15</li>
 </ul>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="Str_length">
-          <h2>Str_length</h2>
-          <div class="procedure-body">
-            <p class="summary">Returns the length of a null-terminated string.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EDX = address of string</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="Str_length">
+      <h2>Str_length</h2>
+      <div class="procedure-body">
+        <p class="summary">Returns the length of a null-terminated string.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EDX = address of string</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = string length</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = string length</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 buffer    BYTE “abcde”,0
 bufLength DWORD ?</p>
@@ -1283,249 +1285,249 @@ call Str_length         ; EAX = 5
 mov  bufLength,eax      ; save length
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="WaitMsg">
-          <h2>WaitMsg</h2>
-          <div class="procedure-body">
-            <p class="summary">Displays the message “Press any key to continue. . .” and waits for the user to press a key.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WaitMsg">
+      <h2>WaitMsg</h2>
+      <div class="procedure-body">
+        <p class="summary">Displays the message “Press any key to continue. . .” and waits for the user to press a key.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight asm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight asm %}
 call WaitMsg
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="WriteBin">
-          <h2>WriteBin</h2>
-          <div class="procedure-body">
-            <p class="summary">Writes an integer to the console window in ASCII binary format.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EAX = integer</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteBin">
+      <h2>WriteBin</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes an integer to the console window in ASCII binary format.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = integer</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight asm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight asm %}
 mov  eax,12346AF9h
 call WriteBin
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="WriteBinB">
-          <h2>WriteBinB</h2>
-          <div class="procedure-body">
-            <p class="summary">Writes a 32-bit integer to the console window in ASCII binary format.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EAX = integer</li>
-                
-                  <li>EBX = display size (1,2, or 4)</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteBinB">
+      <h2>WriteBinB</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes a 32-bit integer to the console window in ASCII binary format.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = integer</li>
+            
+              <li>EBX = display size (1,2, or 4)</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 mov  eax, 1234h
 mov  ebx, TYPE WORD
 call WriteBinB
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="WriteHex">
-          <h2>WriteHex</h2>
-          <div class="procedure-body">
-            <p class="summary">Writes a 32-bit unsigned integer to output in 8-digit hexidecimal.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EAX = integer</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteHex">
+      <h2>WriteHex</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes a 32-bit unsigned integer to output in 8-digit hexidecimal.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = integer</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight asm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight asm %}
 mov  eax,7FFFh
 call WriteHex       ; displays: “00007FFF”
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="WriteHexB">
-          <h2>WriteHexB</h2>
-          <div class="procedure-body">
-            <p class="summary">Writes a 32-bit unsigned integer to output in hexidecimal.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EAX = integer</li>
-                
-                  <li>EBX = display size (1,2, or 4)</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteHexB">
+      <h2>WriteHexB</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes a 32-bit unsigned integer to output in hexidecimal.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = integer</li>
+            
+              <li>EBX = display size (1,2, or 4)</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight asm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight asm %}
 mov  eax,7FFFh
 mov  ebx, TYPE WORD
 call WriteHexB       ; displays: “7FFF”
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="WriteInt">
-          <h2>WriteInt</h2>
-          <div class="procedure-body">
-            <p class="summary">Displays a 32-bit signed integer to output.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EAX = integer</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteInt">
+      <h2>WriteInt</h2>
+      <div class="procedure-body">
+        <p class="summary">Displays a 32-bit signed integer to output.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = integer</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 mov  eax,216543
 call WriteInt       ; displays: “+216543”
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="WriteToFile">
-          <h2>WriteToFile</h2>
-          <div class="procedure-body">
-            <p class="summary">Writes the contents of a buffer to an output file.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EAX = file handle</li>
-                
-                  <li>EDX = address of buffer</li>
-                
-                  <li>ECX = number of bytes to write</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteToFile">
+      <h2>WriteToFile</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes the contents of a buffer to an output file.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = file handle</li>
+            
+              <li>EDX = address of buffer</li>
+            
+              <li>ECX = number of bytes to write</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>EAX = number of bytes written (0 if error)</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = number of bytes written (0 if error)</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 BUFFER_SIZE = 5000
 .data
 fileHandle DWORD ?
@@ -1538,137 +1540,137 @@ mov  ecx, BUFFER_SIZE
 call WriteToFile
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="WriteWindowsMsg">
-          <h2>WriteWindowsMsg</h2>
-          <div class="procedure-body">
-            <p class="summary">Writes a string containing the most recent error generated by your application to the output when executing a call to a system function.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteWindowsMsg">
+      <h2>WriteWindowsMsg</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes a string containing the most recent error generated by your application to the output when executing a call to a system function.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 call WriteWindowsMsg
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="WriteChar">
-          <h2>WriteChar</h2>
-          <div class="procedure-body">
-            <p class="summary">Displays a character to the output.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>AL = character</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteChar">
+      <h2>WriteChar</h2>
+      <div class="procedure-body">
+        <p class="summary">Displays a character to the output.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>AL = character</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 mov  al, ‘+’
 call WriteChar
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="WriteDec">
-          <h2>WriteDec</h2>
-          <div class="procedure-body">
-            <p class="summary">Displays a 32-bit unsigned integer to output.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EAX = integer</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteDec">
+      <h2>WriteDec</h2>
+      <div class="procedure-body">
+        <p class="summary">Displays a 32-bit unsigned integer to output.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = integer</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight asm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight asm %}
 mov  eax, 256
 call WriteDec
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-        <div class="procedure" id="WriteString">
-          <h2>WriteString</h2>
-          <div class="procedure-body">
-            <p class="summary">Writes a null-terminated string to output.</h3>
-            <div class="receives">
-              <em>receives: </em>
-              <ul>
-                
-                  <li>EDX = address of string</li>
-                
-              </ul>
-            </div> <!-- receives -->
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteString">
+      <h2>WriteString</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes a null-terminated string to output.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EDX = address of string</li>
+            
+          </ul>
+        </div> <!-- receives -->
 
-            <div class="returns">
-              <em>returns: </em>
-              <ul>
-                
-                  <li>None</li>
-                
-              </ul>
-            </div> <!-- returns -->
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
 
-            <div class="example">
-              Example code:
-              <p>{% highlight nasm %}
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
 .data
 prompt BYTE “Enter your name: “,0</p>
 
@@ -1677,12 +1679,12 @@ mov  edx,OFFSET prompt
 call WriteString
 {% endhighlight %}</p>
 
-            </div> <!-- example -->
-          </div> <!-- procedure-body -->
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
 
-        </div><!-- #titleprocedure -->
-      
-    </div><!-- procedures -->
+    </div><!-- #titleprocedure -->
+  
+</div><!-- procedures -->
   </main>
 </body>
 </html>
