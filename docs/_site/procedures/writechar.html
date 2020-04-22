@@ -16,7 +16,7 @@
     
       <a href="#Clrscr" class='navlink'>Clrscr</a>
     
-      <a href="#CloseFile" class='navlink'>CloseFile</a>
+      <a href="#CreateOutputFile" class='navlink'>CreateOutputFile</a>
     
       <a href="#Crlf" class='navlink'>Crlf</a>
     
@@ -78,21 +78,21 @@
     
       <a href="#WriteBinB" class='navlink'>WriteBinB</a>
     
+      <a href="#WriteChar" class='navlink'>WriteChar</a>
+    
+      <a href="#WriteDec" class='navlink'>WriteDec</a>
+    
       <a href="#WriteHex" class='navlink'>WriteHex</a>
     
       <a href="#WriteHexB" class='navlink'>WriteHexB</a>
     
       <a href="#WriteInt" class='navlink'>WriteInt</a>
     
+      <a href="#WriteString" class='navlink'>WriteString</a>
+    
       <a href="#WriteToFile" class='navlink'>WriteToFile</a>
     
       <a href="#WriteWindowsMsg" class='navlink'>WriteWindowsMsg</a>
-    
-      <a href="#WriteChar" class='navlink'>WriteChar</a>
-    
-      <a href="#WriteDec" class='navlink'>WriteDec</a>
-    
-      <a href="#WriteString" class='navlink'>WriteString</a>
     
   </div>
 </nav>
@@ -166,8 +166,8 @@
 
     </div><!-- #titleprocedure -->
   
-    <div class="procedure" id="CloseFile">
-      <h2>CloseFile</h2>
+    <div class="procedure" id="CreateOutputFile">
+      <h2>CreateOutputFile</h2>
       <div class="procedure-body">
         <p class="summary">Creates a new disk file for writing in output mode.</h3>
         <div class="receives">
@@ -183,7 +183,7 @@
           <em>returns: </em>
           <ul>
             
-              <li>EAX = file handle if successful, or INVALID_HANDLE_VALUE if not</li>
+              <li>EAX = file handle (INVALID_HANDLE_VALUE if error)</li>
             
           </ul>
         </div> <!-- returns -->
@@ -196,7 +196,9 @@
 
 <span class="p">.</span><span class="n">code</span>
 <span class="k">mov</span>  <span class="n">edx</span><span class="p">,</span><span class="n">OFFSET</span> <span class="n">filename</span>
-<span class="k">call</span> <span class="n">CreateOutputFile</span></code></pre></figure>
+<span class="k">call</span> <span class="n">CreateOutputFile</span>
+<span class="k">cmp</span>  <span class="n">eax</span><span class="p">,</span> <span class="n">INVALID_HANDLE_VALUE</span>
+<span class="k">je</span>   <span class="n">Error</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1366,185 +1368,6 @@ call WriteBin</code></pre></figure>
 
     </div><!-- #titleprocedure -->
   
-    <div class="procedure" id="WriteHex">
-      <h2>WriteHex</h2>
-      <div class="procedure-body">
-        <p class="summary">Writes a 32-bit unsigned integer to output in 8-digit hexidecimal.</h3>
-        <div class="receives">
-          <em>receives: </em>
-          <ul>
-            
-              <li>EAX = integer</li>
-            
-          </ul>
-        </div> <!-- receives -->
-
-        <div class="returns">
-          <em>returns: </em>
-          <ul>
-            
-              <li>None</li>
-            
-          </ul>
-        </div> <!-- returns -->
-
-        <div class="example">
-          <span>Example code:</span>
-          
-<figure class="highlight"><pre><code class="language-asm" data-lang="asm">mov  eax,7FFFh
-call WriteHex       ; displays: "00007FFF"</code></pre></figure>
-
-        </div> <!-- example -->
-      </div> <!-- procedure-body -->
-
-    </div><!-- #titleprocedure -->
-  
-    <div class="procedure" id="WriteHexB">
-      <h2>WriteHexB</h2>
-      <div class="procedure-body">
-        <p class="summary">Writes a 32-bit unsigned integer to output in hexidecimal.</h3>
-        <div class="receives">
-          <em>receives: </em>
-          <ul>
-            
-              <li>EAX = integer</li>
-            
-              <li>EBX = display size (1,2, or 4)</li>
-            
-          </ul>
-        </div> <!-- receives -->
-
-        <div class="returns">
-          <em>returns: </em>
-          <ul>
-            
-              <li>None</li>
-            
-          </ul>
-        </div> <!-- returns -->
-
-        <div class="example">
-          <span>Example code:</span>
-          
-<figure class="highlight"><pre><code class="language-asm" data-lang="asm">mov  eax,7FFFh
-mov  ebx, TYPE WORD
-call WriteHexB       ; displays: "7FFF"</code></pre></figure>
-
-        </div> <!-- example -->
-      </div> <!-- procedure-body -->
-
-    </div><!-- #titleprocedure -->
-  
-    <div class="procedure" id="WriteInt">
-      <h2>WriteInt</h2>
-      <div class="procedure-body">
-        <p class="summary">Displays a 32-bit signed integer to output.</h3>
-        <div class="receives">
-          <em>receives: </em>
-          <ul>
-            
-              <li>EAX = integer</li>
-            
-          </ul>
-        </div> <!-- receives -->
-
-        <div class="returns">
-          <em>returns: </em>
-          <ul>
-            
-              <li>None</li>
-            
-          </ul>
-        </div> <!-- returns -->
-
-        <div class="example">
-          <span>Example code:</span>
-          
-<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">mov</span>  <span class="n">eax</span><span class="p">,</span><span class="mi">216543</span>
-<span class="k">call</span> <span class="n">WriteInt</span>       <span class="c">; displays: "+216543"</span></code></pre></figure>
-
-        </div> <!-- example -->
-      </div> <!-- procedure-body -->
-
-    </div><!-- #titleprocedure -->
-  
-    <div class="procedure" id="WriteToFile">
-      <h2>WriteToFile</h2>
-      <div class="procedure-body">
-        <p class="summary">Writes the contents of a buffer to an output file.</h3>
-        <div class="receives">
-          <em>receives: </em>
-          <ul>
-            
-              <li>EAX = file handle</li>
-            
-              <li>EDX = address of buffer</li>
-            
-              <li>ECX = number of bytes to write</li>
-            
-          </ul>
-        </div> <!-- receives -->
-
-        <div class="returns">
-          <em>returns: </em>
-          <ul>
-            
-              <li>EAX = number of bytes written (0 if error)</li>
-            
-          </ul>
-        </div> <!-- returns -->
-
-        <div class="example">
-          <span>Example code:</span>
-          
-<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="n">BUFFER_SIZE</span> <span class="o">=</span> <span class="mi">5000</span>
-<span class="p">.</span><span class="n">data</span>
-<span class="n">fileHandle</span> <span class="n">DWORD</span> <span class="o">?</span>
-<span class="n">buffer</span> <span class="n">BYTE</span> <span class="n">BUFFER_SIZE</span> <span class="n">DUP</span><span class="p">(</span><span class="o">?</span><span class="p">)</span>
-
-<span class="p">.</span><span class="n">code</span>
-<span class="k">mov</span>  <span class="n">eax</span><span class="p">,</span> <span class="n">fileHandle</span>
-<span class="k">mov</span>  <span class="n">edx</span><span class="p">,</span> <span class="n">OFFSET</span> <span class="n">buffer</span>
-<span class="k">mov</span>  <span class="n">ecx</span><span class="p">,</span> <span class="n">BUFFER_SIZE</span>
-<span class="k">call</span> <span class="n">WriteToFile</span></code></pre></figure>
-
-        </div> <!-- example -->
-      </div> <!-- procedure-body -->
-
-    </div><!-- #titleprocedure -->
-  
-    <div class="procedure" id="WriteWindowsMsg">
-      <h2>WriteWindowsMsg</h2>
-      <div class="procedure-body">
-        <p class="summary">Writes a string containing the most recent error generated by your application to the output when executing a call to a system function.</h3>
-        <div class="receives">
-          <em>receives: </em>
-          <ul>
-            
-              <li>None</li>
-            
-          </ul>
-        </div> <!-- receives -->
-
-        <div class="returns">
-          <em>returns: </em>
-          <ul>
-            
-              <li>None</li>
-            
-          </ul>
-        </div> <!-- returns -->
-
-        <div class="example">
-          <span>Example code:</span>
-          
-<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">call</span> <span class="n">WriteWindowsMsg</span></code></pre></figure>
-
-        </div> <!-- example -->
-      </div> <!-- procedure-body -->
-
-    </div><!-- #titleprocedure -->
-  
     <div class="procedure" id="WriteChar">
       <h2>WriteChar</h2>
       <div class="procedure-body">
@@ -1612,6 +1435,111 @@ call WriteDec
 
     </div><!-- #titleprocedure -->
   
+    <div class="procedure" id="WriteHex">
+      <h2>WriteHex</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes a 32-bit unsigned integer to output in 8-digit hexidecimal.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = integer</li>
+            
+          </ul>
+        </div> <!-- receives -->
+
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
+
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight asm %}
+mov  eax,7FFFh
+call WriteHex       ; displays: “00007FFF”
+{% endhighlight %}</p>
+
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
+
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteHexB">
+      <h2>WriteHexB</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes a 32-bit unsigned integer to output in hexidecimal.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = integer</li>
+            
+              <li>EBX = display size (1,2, or 4)</li>
+            
+          </ul>
+        </div> <!-- receives -->
+
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
+
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight asm %}
+mov  eax,7FFFh
+mov  ebx, TYPE WORD
+call WriteHexB       ; displays: “7FFF”
+{% endhighlight %}</p>
+
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
+
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteInt">
+      <h2>WriteInt</h2>
+      <div class="procedure-body">
+        <p class="summary">Displays a 32-bit signed integer to output.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = integer</li>
+            
+          </ul>
+        </div> <!-- receives -->
+
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
+
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
+mov  eax,216543
+call WriteInt       ; displays: “+216543”
+{% endhighlight %}</p>
+
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
+
+    </div><!-- #titleprocedure -->
+  
     <div class="procedure" id="WriteString">
       <h2>WriteString</h2>
       <div class="procedure-body">
@@ -1643,6 +1571,85 @@ prompt BYTE “Enter your name: “,0</p>
 <p>.code
 mov  edx,OFFSET prompt
 call WriteString
+{% endhighlight %}</p>
+
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
+
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteToFile">
+      <h2>WriteToFile</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes the contents of a buffer to an output file.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>EAX = file handle</li>
+            
+              <li>EDX = address of buffer</li>
+            
+              <li>ECX = number of bytes to write</li>
+            
+          </ul>
+        </div> <!-- receives -->
+
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>EAX = number of bytes written (0 if error)</li>
+            
+          </ul>
+        </div> <!-- returns -->
+
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
+BUFFER_SIZE = 5000
+.data
+fileHandle DWORD ?
+buffer BYTE BUFFER_SIZE DUP(?)</p>
+
+<p>.code
+mov  eax, fileHandle
+mov  edx, OFFSET buffer
+mov  ecx, BUFFER_SIZE
+call WriteToFile
+{% endhighlight %}</p>
+
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
+
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteWindowsMsg">
+      <h2>WriteWindowsMsg</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes a string containing the most recent error generated by your application to the output when executing a call to a system function.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- receives -->
+
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
+
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
+call WriteWindowsMsg
 {% endhighlight %}</p>
 
         </div> <!-- example -->
