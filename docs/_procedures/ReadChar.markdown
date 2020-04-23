@@ -6,6 +6,7 @@ receives:
     - AL = character
     - AH = scan code (optional ; if extended key pressed)
 returns: None
+categories: general
 ---
 {% highlight nasm %}
 .data

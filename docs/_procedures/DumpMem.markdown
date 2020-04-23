@@ -7,6 +7,7 @@ receives:
     - ECX = number of units
     - EBX = unit size (1,2, or 4)
 returns: None
+categories: general
 ---
 {% highlight nasm %}
 .data

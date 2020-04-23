@@ -4,6 +4,7 @@ title: RandomRange
 summary: Produces a random integer within a range.
 receives: EAX = upper limit (exclusive)
 returns: EAX = random integer
+categories: general
 ---
 {% highlight nasm %}
 .data

@@ -7,6 +7,7 @@ receives:
     - EDX = address of buffer
     - ECX = number of bytes to write
 returns: EAX = number of bytes written (0 if error)
+categories: file
 ---
 {% highlight nasm %}
 BUFFER_SIZE = 5000

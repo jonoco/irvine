@@ -6,6 +6,7 @@ receives:
     - DH = X coordinate (column)
     - DL = Y coordinate (row)
 returns: None
+categories: general
 ---
 {% highlight nasm %}
 mov  dh,10          ; row 10

@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   padding-top: 10vh;
-  text-justify: center;
 
   .links {
     display: flex;
@@ -29,8 +28,17 @@
     }
   }
 
-  .navlink {
+  .navhead {
+    border-radius: 15px;
+    font-size: 1.2em;
+    text-align: center;
+    width: 80%;
 
+    &:hover {
+      cursor: pointer;
+      background: #888;
+      color: #fff;
+    }
   }
 
   hr {
@@ -40,6 +48,5 @@
 
   a {
     color: #222;
-    text-justify: center;
   }
 }

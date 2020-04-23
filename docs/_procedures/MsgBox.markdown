@@ -6,6 +6,7 @@ receives:
     - EDX = address of message string
     - EBX = address of title string ; 0 for blank
 returns: None
+categories: general graphical
 ---
 {% highlight nasm %}
 .data

@@ -4,6 +4,7 @@ title: ReadHex
 summary: Reads a 32-bit hexadecimal integer from the keyboard.
 receives: None
 returns: EAX = integer
+categories: general
 ---
 {% highlight asm %}
 .data

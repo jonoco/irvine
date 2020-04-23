@@ -4,6 +4,7 @@ title: SetTextColor
 summary: Sets the foreground and background colors for text output.
 receives: EAX = colors
 returns: None
+categories: general
 ---
 {% highlight nasm %}
 ; foreground color + (background color x 16)

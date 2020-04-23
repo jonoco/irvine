@@ -4,6 +4,7 @@ title: WriteString
 summary: Writes a null-terminated string to output.
 receives: EDX = address of string
 returns: None
+categories: general
 ---
 {% highlight nasm %}
 .data

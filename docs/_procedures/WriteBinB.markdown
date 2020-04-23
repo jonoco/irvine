@@ -6,6 +6,7 @@ receives:
     - EAX = integer
     - EBX = display size (1,2, or 4)
 returns: None
+categories: general
 ---
 {% highlight nasm %}
 mov  eax, 1234h

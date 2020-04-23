@@ -8,6 +8,7 @@ receives:
 returns: 
     - EDX = address of user string
     - EAX = number of characters entered
+categories: general
 ---
 {% highlight nasm %}
 .data

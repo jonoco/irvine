@@ -6,6 +6,7 @@ receives: None
 returns:
     - DX = number of columns ; max 255
     - AX = number of rows ; max 255
+categories: general
 ---
 {% highlight nasm %}
 .data

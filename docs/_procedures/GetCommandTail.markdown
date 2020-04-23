@@ -4,6 +4,7 @@ title: GetCommandTail
 summary: Copies the program’s command line into a null-terminated string.
 receives: EDX = address of array ; array must be at least 129 bytes
 returns: None
+categories: general
 ---
 {% highlight asm %}
 .data

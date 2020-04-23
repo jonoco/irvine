@@ -6,6 +6,7 @@ receives: None
 returns: 
     - EAX = unsigned integer
     - CF = 1 if value is zero or invalid, else 0
+categories: general
 ---
 {% highlight nasm %}
 .data

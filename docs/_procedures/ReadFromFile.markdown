@@ -9,6 +9,7 @@ receives:
 returns: 
     - EAX = bytes read (CF = 0) or error (CF = 1)
     - CF = error indicator
+categories: file
 ---
 {% highlight nasm %}
 .data

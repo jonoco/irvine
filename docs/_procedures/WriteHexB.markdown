@@ -6,6 +6,7 @@ receives:
     - EAX = integer
     - EBX = display size (1,2, or 4)
 returns: None
+categories: general
 ---
 {% highlight asm %}
 mov  eax,7FFFh

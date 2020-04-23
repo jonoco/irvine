@@ -6,6 +6,7 @@ receives:
     - EDX = address of question string
     - EBX = address of title string ; 0 for blank
 returns: EAX = answer ; IDYES (6) or IDNO (7)
+categories: general graphical
 ---
 {% highlight nasm %}
 .data

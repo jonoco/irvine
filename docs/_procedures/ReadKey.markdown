@@ -9,6 +9,7 @@ returns:
     - DX = virtual key code (if AL = 0)
     - EBX = keyboard flag bits (if AL = 0)
     - ZF = 0 (key pressed) or 1 (no key)
+categories: general
 ---
 {% highlight nasm %}
 .data

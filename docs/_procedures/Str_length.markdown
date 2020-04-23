@@ -4,6 +4,7 @@ title: Str_length
 summary: Returns the length of a null-terminated string.
 receives: EDX = address of string
 returns: EAX = string length
+categories: general
 ---
 {% highlight nasm %}
 .data

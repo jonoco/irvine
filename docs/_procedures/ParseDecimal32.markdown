@@ -6,6 +6,7 @@ receives:
     - EDX = address of string
     - ECX = length of string
 returns: EAX = parsed integer
+categories: general
 ---
 {% highlight nasm %}
 .data

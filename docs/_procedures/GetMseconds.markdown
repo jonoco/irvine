@@ -4,6 +4,7 @@ title: GetMseconds
 summary: Gets the number of milliseconds elapsed since midnight on the host computer.
 receives: None
 returns: EAX = time in milliseconds
+categories: general
 ---
 {% highlight nasm %}
 .data
