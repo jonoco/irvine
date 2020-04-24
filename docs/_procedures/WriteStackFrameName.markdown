@@ -20,6 +20,6 @@ procName BYTE "myProc", 0
 
 .code
 ; inside myProc ...
-INVOKE WriteStackFrame, 1, 2, 3, ADDR procName
+INVOKE WriteStackFrameName, 1, 2, 3, ADDR procName
 
 {% endhighlight %}
