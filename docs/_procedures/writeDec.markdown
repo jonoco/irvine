@@ -6,7 +6,7 @@ receives: EAX = integer
 returns: None
 categories: general
 ---
-{% highlight asm %}
+{% highlight nasm %}
 mov  eax, 256
 call WriteDec
 {% endhighlight %}

@@ -6,7 +6,7 @@ receives: None
 returns: EAX = integer
 categories: general
 ---
-{% highlight asm %}
+{% highlight nasm %}
 .data
 intVal SDWORD ?
 

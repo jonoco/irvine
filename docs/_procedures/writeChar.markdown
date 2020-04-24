@@ -7,6 +7,10 @@ returns: None
 categories: general
 ---
 {% highlight nasm %}
+.data
+myChar CHAR '+'
+
+.code
 mov  al, '+'
 call WriteChar
 {% endhighlight %}

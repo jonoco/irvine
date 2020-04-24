@@ -8,9 +8,10 @@ categories: general
 ---
 {% highlight nasm %}
 .data
-prompt BYTE "Enter your name: ",0
+prompt BYTE "Enter your name: ", 0
 
 .code
-mov  edx,OFFSET prompt
-call WriteString
+mov  edx, OFFSET prompt
+call WriteString        ; "Enter your name: "
+call Crlf
 {% endhighlight %}

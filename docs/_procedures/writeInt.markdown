@@ -7,6 +7,10 @@ returns: None
 categories: general
 ---
 {% highlight nasm %}
-mov  eax,216543
+.data
+myInt SWORD 216543
+
+.code
+mov  eax, myInt
 call WriteInt       ; displays: "+216543"
 {% endhighlight %}

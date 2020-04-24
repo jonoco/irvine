@@ -1178,12 +1178,12 @@ mov  hexVal,eax</code></pre></figure>
         <div class="example">
           <span>Example code:</span>
           
-<figure class="highlight"><pre><code class="language-asm" data-lang="asm">.data
-intVal SDWORD ?
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">intVal</span> <span class="n">SDWORD</span> <span class="o">?</span>
 
-.code
-call ReadInt
-mov  intVal,eax</code></pre></figure>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">call</span> <span class="n">ReadInt</span>
+<span class="k">mov</span>  <span class="n">intVal</span><span class="p">,</span><span class="n">eax</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1701,7 +1701,11 @@ call WriteBin</code></pre></figure>
         <div class="example">
           <span>Example code:</span>
           
-<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">mov</span>  <span class="n">al</span><span class="p">,</span> <span class="sc">'+'</span>
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">myChar</span> <span class="n">CHAR</span> <span class="sc">'+'</span>
+
+<span class="p">.</span><span class="n">code</span>
+<span class="k">mov</span>  <span class="n">al</span><span class="p">,</span> <span class="sc">'+'</span>
 <span class="k">call</span> <span class="n">WriteChar</span></code></pre></figure>
 
         </div> <!-- example -->
@@ -1734,8 +1738,8 @@ call WriteBin</code></pre></figure>
         <div class="example">
           <span>Example code:</span>
           
-<figure class="highlight"><pre><code class="language-asm" data-lang="asm">mov  eax, 256
-call WriteDec</code></pre></figure>
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">mov</span>  <span class="n">eax</span><span class="p">,</span> <span class="mi">256</span>
+<span class="k">call</span> <span class="n">WriteDec</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1874,7 +1878,11 @@ call WriteHexB       ; displays: "7FFF"</code></pre></figure>
         <div class="example">
           <span>Example code:</span>
           
-<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">mov</span>  <span class="n">eax</span><span class="p">,</span><span class="mi">216543</span>
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">myInt</span> <span class="n">SWORD</span> <span class="mi">216543</span>
+
+<span class="p">.</span><span class="n">code</span>
+<span class="k">mov</span>  <span class="n">eax</span><span class="p">,</span> <span class="n">myInt</span>
 <span class="k">call</span> <span class="n">WriteInt</span>       <span class="c">; displays: "+216543"</span></code></pre></figure>
 
         </div> <!-- example -->
@@ -1997,11 +2005,12 @@ call WriteHexB       ; displays: "7FFF"</code></pre></figure>
           <span>Example code:</span>
           <p>{% highlight nasm %}
 .data
-prompt BYTE “Enter your name: “,0</p>
+prompt BYTE “Enter your name: “, 0</p>
 
 <p>.code
-mov  edx,OFFSET prompt
-call WriteString
+mov  edx, OFFSET prompt
+call WriteString        ; “Enter your name: “
+call Crlf
 {% endhighlight %}</p>
 
         </div> <!-- example -->

@@ -1186,7 +1186,7 @@ mov  hexVal,eax
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight asm %}
+          <p>{% highlight nasm %}
 .data
 intVal SDWORD ?</p>
 
@@ -1723,6 +1723,10 @@ call WriteBinB
         <div class="example">
           <span>Example code:</span>
           <p>{% highlight nasm %}
+.data
+myChar CHAR ‘+’</p>
+
+<p>.code
 mov  al, ‘+’
 call WriteChar
 {% endhighlight %}</p>
@@ -1756,7 +1760,7 @@ call WriteChar
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight asm %}
+          <p>{% highlight nasm %}
 mov  eax, 256
 call WriteDec
 {% endhighlight %}</p>
@@ -1901,7 +1905,11 @@ call WriteHexB       ; displays: “7FFF”
         <div class="example">
           <span>Example code:</span>
           <p>{% highlight nasm %}
-mov  eax,216543
+.data
+myInt SWORD 216543</p>
+
+<p>.code
+mov  eax, myInt
 call WriteInt       ; displays: “+216543”
 {% endhighlight %}</p>
 
@@ -2029,11 +2037,12 @@ INVOKE WriteStackFrameName, 1, 2, 3, ADDR procName</p>
           <span>Example code:</span>
           <p>{% highlight nasm %}
 .data
-prompt BYTE “Enter your name: “,0</p>
+prompt BYTE “Enter your name: “, 0</p>
 
 <p>.code
-mov  edx,OFFSET prompt
-call WriteString
+mov  edx, OFFSET prompt
+call WriteString        ; “Enter your name: “
+call Crlf
 {% endhighlight %}</p>
 
         </div> <!-- example -->

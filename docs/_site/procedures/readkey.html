@@ -1178,12 +1178,12 @@ mov  hexVal,eax</code></pre></figure>
         <div class="example">
           <span>Example code:</span>
           
-<figure class="highlight"><pre><code class="language-asm" data-lang="asm">.data
-intVal SDWORD ?
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">intVal</span> <span class="n">SDWORD</span> <span class="o">?</span>
 
-.code
-call ReadInt
-mov  intVal,eax</code></pre></figure>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">call</span> <span class="n">ReadInt</span>
+<span class="k">mov</span>  <span class="n">intVal</span><span class="p">,</span><span class="n">eax</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1712,6 +1712,10 @@ call WriteBinB
         <div class="example">
           <span>Example code:</span>
           <p>{% highlight nasm %}
+.data
+myChar CHAR ‘+’</p>
+
+<p>.code
 mov  al, ‘+’
 call WriteChar
 {% endhighlight %}</p>
@@ -1745,7 +1749,7 @@ call WriteChar
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight asm %}
+          <p>{% highlight nasm %}
 mov  eax, 256
 call WriteDec
 {% endhighlight %}</p>
@@ -1890,7 +1894,11 @@ call WriteHexB       ; displays: “7FFF”
         <div class="example">
           <span>Example code:</span>
           <p>{% highlight nasm %}
-mov  eax,216543
+.data
+myInt SWORD 216543</p>
+
+<p>.code
+mov  eax, myInt
 call WriteInt       ; displays: “+216543”
 {% endhighlight %}</p>
 
@@ -2018,11 +2026,12 @@ INVOKE WriteStackFrameName, 1, 2, 3, ADDR procName</p>
           <span>Example code:</span>
           <p>{% highlight nasm %}
 .data
-prompt BYTE “Enter your name: “,0</p>
+prompt BYTE “Enter your name: “, 0</p>
 
 <p>.code
-mov  edx,OFFSET prompt
-call WriteString
+mov  edx, OFFSET prompt
+call WriteString        ; “Enter your name: “
+call Crlf
 {% endhighlight %}</p>
 
         </div> <!-- example -->
