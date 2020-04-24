@@ -317,16 +317,15 @@
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-array DWORD 1,2,3,4,5,6,7,8,9,0Ah,0Bh</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">array</span> <span class="n">DWORD</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="n">Ah</span><span class="p">,</span><span class="mi">0</span><span class="n">Bh</span>
 
-<p>.code
-mov  esi,OFFSET array        ; starting OFFSET
-mov  ecx,LENGTHOF array      ; number of units
-mov  ebx,TYPE array          ; doubleword format
-call DumpMem
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">mov</span>  <span class="n">esi</span><span class="p">,</span><span class="n">OFFSET</span> <span class="n">array</span>        <span class="c">; starting OFFSET</span>
+<span class="k">mov</span>  <span class="n">ecx</span><span class="p">,</span><span class="n">LENGTHOF</span> <span class="n">array</span>      <span class="c">; number of units</span>
+<span class="k">mov</span>  <span class="n">ebx</span><span class="p">,</span><span class="n">TYPE</span> <span class="n">array</span>          <span class="c">; doubleword format</span>
+<span class="k">call</span> <span class="n">DumpMem</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -357,9 +356,8 @@ call DumpMem
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight asm %}
-call DumpRegs
-{% endhighlight %}</p>
+          
+<figure class="highlight"><pre><code class="language-asm" data-lang="asm">call DumpRegs</code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -390,14 +388,13 @@ call DumpRegs
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight asm %}
-.data
-cmdTail BYTE 129 DUP(0)     ; empty buffer</p>
+          
+<figure class="highlight"><pre><code class="language-asm" data-lang="asm">.data
+cmdTail BYTE 129 DUP(0)     ; empty buffer
 
-<p>.code
+.code
 mov  edx,OFFSET cmdTail
-call GetCommandTail         ; fills the buffer
-{% endhighlight %}</p>
+call GetCommandTail         ; fills the buffer</code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -428,28 +425,27 @@ call GetCommandTail         ; fills the buffer
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-time        QWORD ?
-tenmil      DWORD 10000000
-shift       REAL8 11644473600.
-unixtime    DWORD ?</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">time</span>        <span class="n">QWORD</span> <span class="o">?</span>
+<span class="n">tenmil</span>      <span class="n">DWORD</span> <span class="mi">10000000</span>
+<span class="n">shift</span>       <span class="n">REAL8</span> <span class="mi">11644473600</span><span class="p">.</span>
+<span class="n">unixtime</span>    <span class="n">DWORD</span> <span class="o">?</span>
 
-<p>.code
-push  offset time
-call  GetDateTime</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">push</span>  <span class="n">offset</span> <span class="n">time</span>
+<span class="k">call</span>  <span class="n">GetDateTime</span>
 
-<p>; convert Win32 FILETIME to Unix time
-finit
-fild  time
-fidiv tenmil
-fsub  shift
-fist  unixtime</p>
+<span class="c">; convert Win32 FILETIME to Unix time</span>
+<span class="k">finit</span>
+<span class="k">fild</span>  <span class="n">time</span>
+<span class="k">fidiv</span> <span class="n">tenmil</span>
+<span class="k">fsub</span>  <span class="n">shift</span>
+<span class="k">fist</span>  <span class="n">unixtime</span>
 
-<p>; display time
-mov   EAX unixtime
-call  WriteDec
-{% endhighlight %}</p>
+<span class="c">; display time</span>
+<span class="k">mov</span>   <span class="n">EAX</span> <span class="n">unixtime</span>
+<span class="k">call</span>  <span class="n">WriteDec</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->

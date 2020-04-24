@@ -317,16 +317,15 @@
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-array DWORD 1,2,3,4,5,6,7,8,9,0Ah,0Bh</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">array</span> <span class="n">DWORD</span> <span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">0</span><span class="n">Ah</span><span class="p">,</span><span class="mi">0</span><span class="n">Bh</span>
 
-<p>.code
-mov  esi,OFFSET array        ; starting OFFSET
-mov  ecx,LENGTHOF array      ; number of units
-mov  ebx,TYPE array          ; doubleword format
-call DumpMem
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">mov</span>  <span class="n">esi</span><span class="p">,</span><span class="n">OFFSET</span> <span class="n">array</span>        <span class="c">; starting OFFSET</span>
+<span class="k">mov</span>  <span class="n">ecx</span><span class="p">,</span><span class="n">LENGTHOF</span> <span class="n">array</span>      <span class="c">; number of units</span>
+<span class="k">mov</span>  <span class="n">ebx</span><span class="p">,</span><span class="n">TYPE</span> <span class="n">array</span>          <span class="c">; doubleword format</span>
+<span class="k">call</span> <span class="n">DumpMem</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -357,9 +356,8 @@ call DumpMem
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight asm %}
-call DumpRegs
-{% endhighlight %}</p>
+          
+<figure class="highlight"><pre><code class="language-asm" data-lang="asm">call DumpRegs</code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -390,14 +388,13 @@ call DumpRegs
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight asm %}
-.data
-cmdTail BYTE 129 DUP(0)     ; empty buffer</p>
+          
+<figure class="highlight"><pre><code class="language-asm" data-lang="asm">.data
+cmdTail BYTE 129 DUP(0)     ; empty buffer
 
-<p>.code
+.code
 mov  edx,OFFSET cmdTail
-call GetCommandTail         ; fills the buffer
-{% endhighlight %}</p>
+call GetCommandTail         ; fills the buffer</code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -428,28 +425,27 @@ call GetCommandTail         ; fills the buffer
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-time        QWORD ?
-tenmil      DWORD 10000000
-shift       REAL8 11644473600.
-unixtime    DWORD ?</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">time</span>        <span class="n">QWORD</span> <span class="o">?</span>
+<span class="n">tenmil</span>      <span class="n">DWORD</span> <span class="mi">10000000</span>
+<span class="n">shift</span>       <span class="n">REAL8</span> <span class="mi">11644473600</span><span class="p">.</span>
+<span class="n">unixtime</span>    <span class="n">DWORD</span> <span class="o">?</span>
 
-<p>.code
-push  offset time
-call  GetDateTime</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">push</span>  <span class="n">offset</span> <span class="n">time</span>
+<span class="k">call</span>  <span class="n">GetDateTime</span>
 
-<p>; convert Win32 FILETIME to Unix time
-finit
-fild  time
-fidiv tenmil
-fsub  shift
-fist  unixtime</p>
+<span class="c">; convert Win32 FILETIME to Unix time</span>
+<span class="k">finit</span>
+<span class="k">fild</span>  <span class="n">time</span>
+<span class="k">fidiv</span> <span class="n">tenmil</span>
+<span class="k">fsub</span>  <span class="n">shift</span>
+<span class="k">fist</span>  <span class="n">unixtime</span>
 
-<p>; display time
-mov   EAX unixtime
-call  WriteDec
-{% endhighlight %}</p>
+<span class="c">; display time</span>
+<span class="k">mov</span>   <span class="n">EAX</span> <span class="n">unixtime</span>
+<span class="k">call</span>  <span class="n">WriteDec</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -482,16 +478,15 @@ call  WriteDec
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-rows BYTE ?
-cols BYTE ?</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">rows</span> <span class="n">BYTE</span> <span class="o">?</span>
+<span class="n">cols</span> <span class="n">BYTE</span> <span class="o">?</span>
 
-<p>.code
-call GetMaxXY
-mov rows,al
-mov cols,dl
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">call</span> <span class="n">GetMaxXY</span>
+<span class="k">mov</span> <span class="n">rows</span><span class="p">,</span><span class="n">al</span>
+<span class="k">mov</span> <span class="n">cols</span><span class="p">,</span><span class="n">dl</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -522,19 +517,18 @@ mov cols,dl
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-    startTime DWORD ?</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+    <span class="n">startTime</span> <span class="n">DWORD</span> <span class="o">?</span>
 
-<p>.code
-    call GetMseconds
-    mov  startTime,eax</p>
+<span class="p">.</span><span class="n">code</span>
+    <span class="k">call</span> <span class="n">GetMseconds</span>
+    <span class="k">mov</span>  <span class="n">startTime</span><span class="p">,</span><span class="n">eax</span>
 
-<p>L1:
-    loop L1
-    call GetMseconds
-    sub  eax,startTime      ; EAX = loop time, in milliseconds
-{% endhighlight %}</p>
+<span class="n">L1</span><span class="o">:</span>
+    <span class="k">loop</span> <span class="n">L1</span>
+    <span class="k">call</span> <span class="n">GetMseconds</span>
+    <span class="k">sub</span>  <span class="n">eax</span><span class="p">,</span><span class="n">startTime</span>      <span class="c">; EAX = loop time, in milliseconds</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -565,14 +559,13 @@ mov cols,dl
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-color byte ?</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">color</span> <span class="n">byte</span> <span class="o">?</span>
 
-<p>.code
-call GetTextColor
-mov  color,AL
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">call</span> <span class="n">GetTextColor</span>
+<span class="k">mov</span>  <span class="n">color</span><span class="p">,</span><span class="n">AL</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -605,11 +598,10 @@ mov  color,AL
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-mov  dh,10          ; row 10
-mov  dl,20          ; column 20
-call Gotoxy         ; locate cursor
-{% endhighlight %}</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">mov</span>  <span class="n">dh</span><span class="p">,</span><span class="mi">10</span>          <span class="c">; row 10</span>
+<span class="k">mov</span>  <span class="n">dl</span><span class="p">,</span><span class="mi">20</span>          <span class="c">; column 20</span>
+<span class="k">call</span> <span class="n">Gotoxy</span>         <span class="c">; locate cursor</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -640,10 +632,9 @@ call Gotoxy         ; locate cursor
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-mov  AL,somechar
-call IsDigit
-{% endhighlight %}</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">mov</span>  <span class="n">AL</span><span class="p">,</span><span class="n">somechar</span>
+<span class="k">call</span> <span class="n">IsDigit</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -676,17 +667,16 @@ call IsDigit
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-caption  BYTE “Dialog Title”, 0
-HelloMsg BYTE “This is a pop-up message box.”, 0dh,0ah 
-         BYTE “Click OK to continue…”, 0</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">caption</span>  <span class="n">BYTE</span> <span class="s">"Dialog Title"</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">HelloMsg</span> <span class="n">BYTE</span> <span class="s">"This is a pop-up message box."</span><span class="p">,</span> <span class="mi">0</span><span class="n">dh</span><span class="p">,</span><span class="mi">0</span><span class="n">ah</span> 
+         <span class="n">BYTE</span> <span class="s">"Click OK to continue..."</span><span class="p">,</span> <span class="mi">0</span>
 
-<p>.code
-mov  ebx, OFFSET caption
-mov  edx, OFFSET HelloMsg
-call MsgBox
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">mov</span>  <span class="n">ebx</span><span class="p">,</span> <span class="n">OFFSET</span> <span class="n">caption</span>
+<span class="k">mov</span>  <span class="n">edx</span><span class="p">,</span> <span class="n">OFFSET</span> <span class="n">HelloMsg</span>
+<span class="k">call</span> <span class="n">MsgBox</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -719,19 +709,18 @@ call MsgBox
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-caption  BYTE “Survey Completed”,0
-question BYTE “Thank you for completing the survey.”
-         BYTE 0dh,0ah
-         BYTE “Would you like to receive the results?”,0</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">caption</span>  <span class="n">BYTE</span> <span class="s">"Survey Completed"</span><span class="p">,</span><span class="mi">0</span>
+<span class="n">question</span> <span class="n">BYTE</span> <span class="s">"Thank you for completing the survey."</span>
+         <span class="n">BYTE</span> <span class="mi">0</span><span class="n">dh</span><span class="p">,</span><span class="mi">0</span><span class="n">ah</span>
+         <span class="n">BYTE</span> <span class="s">"Would you like to receive the results?"</span><span class="p">,</span><span class="mi">0</span>
 
-<p>.code
-mov  ebx, OFFSET caption
-mov  edx, OFFSET question
-call MsgBoxAsk
-;(check return value in EAX)
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">mov</span>  <span class="n">ebx</span><span class="p">,</span> <span class="n">OFFSET</span> <span class="n">caption</span>
+<span class="k">mov</span>  <span class="n">edx</span><span class="p">,</span> <span class="n">OFFSET</span> <span class="n">question</span>
+<span class="k">call</span> <span class="n">MsgBoxAsk</span>
+<span class="c">;(check return value in EAX)</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -762,14 +751,13 @@ call MsgBoxAsk
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-filename BYTE “myfile.txt”,0</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">filename</span> <span class="n">BYTE</span> <span class="s">"myfile.txt"</span><span class="p">,</span><span class="mi">0</span>
 
-<p>.code
-mov  edx,OFFSET filename
-call OpenInputFile
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">mov</span>  <span class="n">edx</span><span class="p">,</span><span class="n">OFFSET</span> <span class="n">filename</span>
+<span class="k">call</span> <span class="n">OpenInputFile</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -802,16 +790,15 @@ call OpenInputFile
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-buffer BYTE “8193”
-bufSize = ($ - buffer)</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">buffer</span> <span class="n">BYTE</span> <span class="s">"8193"</span>
+<span class="n">bufSize</span> <span class="o">=</span> <span class="p">(</span><span class="err">$</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">)</span>
 
-<p>.code
-mov  edx,OFFSET buffer
-mov  ecx,bufSize
-call ParseDecimal32 ; returns EAX
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">mov</span>  <span class="n">edx</span><span class="p">,</span><span class="n">OFFSET</span> <span class="n">buffer</span>
+<span class="k">mov</span>  <span class="n">ecx</span><span class="p">,</span><span class="n">bufSize</span>
+<span class="k">call</span> <span class="n">ParseDecimal32</span> <span class="c">; returns EAX</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -844,16 +831,15 @@ call ParseDecimal32 ; returns EAX
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-buffer BYTE “-8193”
-bufSize = ($ - buffer)</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">buffer</span> <span class="n">BYTE</span> <span class="s">"-8193"</span>
+<span class="n">bufSize</span> <span class="o">=</span> <span class="p">(</span><span class="err">$</span> <span class="o">-</span> <span class="n">buffer</span><span class="p">)</span>
 
-<p>.code
-mov  edx,OFFSET buffer
-mov  ecx,bufSize
-call ParseInteger32 ; returns EAX
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">mov</span>  <span class="n">edx</span><span class="p">,</span><span class="n">OFFSET</span> <span class="n">buffer</span>
+<span class="k">mov</span>  <span class="n">ecx</span><span class="p">,</span><span class="n">bufSize</span>
+<span class="k">call</span> <span class="n">ParseInteger32</span> <span class="c">; returns EAX</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -884,14 +870,13 @@ call ParseInteger32 ; returns EAX
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-randVal DWORD ?</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">randVal</span> <span class="n">DWORD</span> <span class="o">?</span>
 
-<p>.code
-call Random32
-mov  randVal,eax 
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">call</span> <span class="n">Random32</span>
+<span class="k">mov</span>  <span class="n">randVal</span><span class="p">,</span><span class="n">eax</span> </code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -922,15 +907,14 @@ mov  randVal,eax
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-randVal DWORD ?</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">randVal</span> <span class="n">DWORD</span> <span class="o">?</span>
 
-<p>.code
-mov  eax, 5000
-call RandomRange    ; generates 0 - 4999
-mov  randVal, eax
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">mov</span>  <span class="n">eax</span><span class="p">,</span> <span class="mi">5000</span>
+<span class="k">call</span> <span class="n">RandomRange</span>    <span class="c">; generates 0 - 4999</span>
+<span class="k">mov</span>  <span class="n">randVal</span><span class="p">,</span> <span class="n">eax</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -961,9 +945,8 @@ mov  randVal, eax
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight asm %}
-call Randomize
-{% endhighlight %}</p>
+          
+<figure class="highlight"><pre><code class="language-asm" data-lang="asm">call Randomize</code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -996,14 +979,13 @@ call Randomize
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-char BYTE ?</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">char</span> <span class="n">BYTE</span> <span class="o">?</span>
 
-<p>.code
-call ReadChar
-mov  char,al
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">call</span> <span class="n">ReadChar</span>
+<span class="k">mov</span>  <span class="n">char</span><span class="p">,</span><span class="n">al</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1036,14 +1018,13 @@ mov  char,al
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-intVal DWORD ?</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">intVal</span> <span class="n">DWORD</span> <span class="o">?</span>
 
-<p>.code
-call ReadDec
-mov  intVal,eax
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">call</span> <span class="n">ReadDec</span>
+<span class="k">mov</span>  <span class="n">intVal</span><span class="p">,</span><span class="n">eax</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1074,13 +1055,12 @@ mov  intVal,eax
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-finit               ; initialize FPU
-call ReadFloat      ; get first float
-call ReadFloat      ; get second float
-fmul ST(0),ST(1)    ; multiply
-call WriteFloat     ; first x second
-{% endhighlight %}</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="k">finit</span>               <span class="c">; initialize FPU</span>
+<span class="k">call</span> <span class="n">ReadFloat</span>      <span class="c">; get first float</span>
+<span class="k">call</span> <span class="n">ReadFloat</span>      <span class="c">; get second float</span>
+<span class="k">fmul</span> <span class="n">ST</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">ST</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>    <span class="c">; multiply</span>
+<span class="k">call</span> <span class="n">WriteFloat</span>     <span class="c">; first x second</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1117,18 +1097,17 @@ call WriteFloat     ; first x second
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-BUFFER_SIZE = 5000
-buffer BYTE BUFFER_SIZE DUP(?)
-bytesRead DWORD ?</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">BUFFER_SIZE</span> <span class="o">=</span> <span class="mi">5000</span>
+<span class="n">buffer</span> <span class="n">BYTE</span> <span class="n">BUFFER_SIZE</span> <span class="n">DUP</span><span class="p">(</span><span class="o">?</span><span class="p">)</span>
+<span class="n">bytesRead</span> <span class="n">DWORD</span> <span class="o">?</span>
 
-<p>.code
-mov  eax, fileHandle     ; open file handle
-mov  edx, OFFSET buffer  ; points to buffer
-mov  ecx, BUFFER_SIZE    ; max bytes to read
-call ReadFromFile        ; read the file
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">mov</span>  <span class="n">eax</span><span class="p">,</span> <span class="n">fileHandle</span>     <span class="c">; open file handle</span>
+<span class="k">mov</span>  <span class="n">edx</span><span class="p">,</span> <span class="n">OFFSET</span> <span class="n">buffer</span>  <span class="c">; points to buffer</span>
+<span class="k">mov</span>  <span class="n">ecx</span><span class="p">,</span> <span class="n">BUFFER_SIZE</span>    <span class="c">; max bytes to read</span>
+<span class="k">call</span> <span class="n">ReadFromFile</span>        <span class="c">; read the file</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1159,14 +1138,13 @@ call ReadFromFile        ; read the file
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight asm %}
-.data
-hexVal DWORD ?</p>
+          
+<figure class="highlight"><pre><code class="language-asm" data-lang="asm">.data
+hexVal DWORD ?
 
-<p>.code
+.code
 call ReadHex
-mov  hexVal,eax
-{% endhighlight %}</p>
+mov  hexVal,eax</code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1197,14 +1175,13 @@ mov  hexVal,eax
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight asm %}
-.data
-intVal SDWORD ?</p>
+          
+<figure class="highlight"><pre><code class="language-asm" data-lang="asm">.data
+intVal SDWORD ?
 
-<p>.code
+.code
 call ReadInt
-mov  intVal,eax
-{% endhighlight %}</p>
+mov  intVal,eax</code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1243,17 +1220,16 @@ mov  intVal,eax
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-pressedKey BYTE ?</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">pressedKey</span> <span class="n">BYTE</span> <span class="o">?</span>
 
-<p>.code
-    call ReadKey
-    cmp ZF, 0
-    jne NoKey
-    mov pressedKey, AL
-NoKey:
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+    <span class="k">call</span> <span class="n">ReadKey</span>
+    <span class="k">cmp</span> <span class="n">ZF</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">jne</span> <span class="n">NoKey</span>
+    <span class="k">mov</span> <span class="n">pressedKey</span><span class="p">,</span> <span class="n">AL</span>
+<span class="n">NoKey</span><span class="o">:</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1288,17 +1264,16 @@ NoKey:
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-buffer    BYTE 21 DUP(0) ; input buffer
-byteCount DWORD ?        ; holds counter</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">buffer</span>    <span class="n">BYTE</span> <span class="mi">21</span> <span class="n">DUP</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="c">; input buffer</span>
+<span class="n">byteCount</span> <span class="n">DWORD</span> <span class="o">?</span>        <span class="c">; holds counter</span>
 
-<p>.code
-mov  edx,OFFSET buffer   ; point to the buffer
-mov  ecx,SIZEOF buffer   ; specify max characters
-call ReadString          ; input the string
-mov  byteCount,eax       ; number of characters
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">mov</span>  <span class="n">edx</span><span class="p">,</span><span class="n">OFFSET</span> <span class="n">buffer</span>   <span class="c">; point to the buffer</span>
+<span class="k">mov</span>  <span class="n">ecx</span><span class="p">,</span><span class="n">SIZEOF</span> <span class="n">buffer</span>   <span class="c">; specify max characters</span>
+<span class="k">call</span> <span class="n">ReadString</span>          <span class="c">; input the string</span>
+<span class="k">mov</span>  <span class="n">byteCount</span><span class="p">,</span><span class="n">eax</span>       <span class="c">; number of characters</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1329,11 +1304,10 @@ mov  byteCount,eax       ; number of characters
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-; foreground color + (background color x 16)
-mov eax, white + (blue * 16)   ; white on blue
-call SetTextColor
-{% endhighlight %}</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="c">; foreground color + (background color x 16)</span>
+<span class="k">mov</span> <span class="n">eax</span><span class="p">,</span> <span class="n">white</span> <span class="o">+</span> <span class="p">(</span><span class="n">blue</span> <span class="o">*</span> <span class="mi">16</span><span class="p">)</span>   <span class="c">; white on blue</span>
+<span class="k">call</span> <span class="n">SetTextColor</span></code></pre></figure>
 
 <p>Color values are:</p>
 <ul>
@@ -1384,17 +1358,16 @@ call SetTextColor
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-first   REAL8 123.456
-second  REAL8 10.0</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">first</span>   <span class="n">REAL8</span> <span class="mi">123</span><span class="p">.</span><span class="mi">456</span>
+<span class="n">second</span>  <span class="n">REAL8</span> <span class="mi">10</span><span class="p">.</span><span class="mi">0</span>
 
-<p>.code
-finit            ; initialize FPU
-fld   first
-fld   second
-call  ShowFPUStack
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">finit</span>            <span class="c">; initialize FPU</span>
+<span class="k">fld</span>   <span class="n">first</span>
+<span class="k">fld</span>   <span class="n">second</span>
+<span class="k">call</span>  <span class="n">ShowFPUStack</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1427,16 +1400,15 @@ call  ShowFPUStack
 
         <div class="example">
           <span>Example code:</span>
-          <p>{% highlight nasm %}
-.data
-stringA   BYTE “abcde”, 0
-stringB   BYTE “xyz”, 0</p>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">stringA</span>   <span class="n">BYTE</span> <span class="s">"abcde"</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">stringB</span>   <span class="n">BYTE</span> <span class="s">"xyz"</span><span class="p">,</span> <span class="mi">0</span>
 
-<p>.code
-push offset stringA
-push offset stringB
-call Str_compare
-{% endhighlight %}</p>
+<span class="p">.</span><span class="n">code</span>
+<span class="k">push</span> <span class="n">offset</span> <span class="n">stringA</span>
+<span class="k">push</span> <span class="n">offset</span> <span class="n">stringB</span>
+<span class="k">call</span> <span class="n">Str_compare</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->

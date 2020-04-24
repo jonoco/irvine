@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <title>Irvine Library</title>
-  <link rel="stylesheet" href="/irvine/assets/css/styles.css">
-  <link rel="icon" href="/irvine/assets/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
   <aside>
     <nav id='navigation'>
-  <a href='https://jonoco.github.io/irvine/' class='navhead'>Top</a>
+  <a href='http://localhost:4000' class='navhead'>Top</a>
   <hr>
   <div class='links'>
     
@@ -28,6 +28,8 @@
       <a href='#DumpRegs' class='navlink'>DumpRegs</a>
     
       <a href='#GetCommandTail' class='navlink'>GetCommandTail</a>
+    
+      <a href='#GetDateTime' class='navlink'>GetDateTime</a>
     
       <a href='#GetMaxXY' class='navlink'>GetMaxXY</a>
     
@@ -75,7 +77,13 @@
     
       <a href='#ShowFPUStack' class='navlink'>ShowFPUStack</a>
     
+      <a href='#Str_compare' class='navlink'>Str_compare</a>
+    
+      <a href='#Str_copy' class='navlink'>Str_copy</a>
+    
       <a href='#Str_length' class='navlink'>Str_length</a>
+    
+      <a href='#Str_trim' class='navlink'>Str_trim</a>
     
       <a href='#WaitMsg' class='navlink'>WaitMsg</a>
     
@@ -94,6 +102,10 @@
       <a href='#WriteHexB' class='navlink'>WriteHexB</a>
     
       <a href='#WriteInt' class='navlink'>WriteInt</a>
+    
+      <a href='#WriteStackFrame' class='navlink'>WriteStackFrame</a>
+    
+      <a href='#WriteStackFrameName' class='navlink'>WriteStackFrameName</a>
     
       <a href='#WriteString' class='navlink'>WriteString</a>
     
@@ -383,6 +395,57 @@ cmdTail BYTE 129 DUP(0)     ; empty buffer
 .code
 mov  edx,OFFSET cmdTail
 call GetCommandTail         ; fills the buffer</code></pre></figure>
+
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
+
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="GetDateTime">
+      <h2>GetDateTime</h2>
+      <div class="procedure-body">
+        <p class="summary">Gets current local date and time, stored in a 64-bit integer in Win32 FILETIME format.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>PTR QWORD - reference to store datetime</li>
+            
+          </ul>
+        </div> <!-- receives -->
+
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>PTR QWORD - date and time in FILETIME format</li>
+            
+          </ul>
+        </div> <!-- returns -->
+
+        <div class="example">
+          <span>Example code:</span>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">time</span>        <span class="n">QWORD</span> <span class="o">?</span>
+<span class="n">tenmil</span>      <span class="n">DWORD</span> <span class="mi">10000000</span>
+<span class="n">shift</span>       <span class="n">REAL8</span> <span class="mi">11644473600</span><span class="p">.</span>
+<span class="n">unixtime</span>    <span class="n">DWORD</span> <span class="o">?</span>
+
+<span class="p">.</span><span class="n">code</span>
+<span class="k">push</span>  <span class="n">offset</span> <span class="n">time</span>
+<span class="k">call</span>  <span class="n">GetDateTime</span>
+
+<span class="c">; convert Win32 FILETIME to Unix time</span>
+<span class="k">finit</span>
+<span class="k">fild</span>  <span class="n">time</span>
+<span class="k">fidiv</span> <span class="n">tenmil</span>
+<span class="k">fsub</span>  <span class="n">shift</span>
+<span class="k">fist</span>  <span class="n">unixtime</span>
+
+<span class="c">; display time</span>
+<span class="k">mov</span>   <span class="n">EAX</span> <span class="n">unixtime</span>
+<span class="k">call</span>  <span class="n">WriteDec</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1311,6 +1374,88 @@ mov  intVal,eax</code></pre></figure>
 
     </div><!-- #titleprocedure -->
   
+    <div class="procedure" id="Str_compare">
+      <h2>Str_compare</h2>
+      <div class="procedure-body">
+        <p class="summary">Compares two strings, setting the Zero and Carry flags.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>PTR BYTE - first string</li>
+            
+              <li>PTR BYTE - second string</li>
+            
+          </ul>
+        </div> <!-- receives -->
+
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>CF and ZF are set according to the CMP instruction</li>
+            
+          </ul>
+        </div> <!-- returns -->
+
+        <div class="example">
+          <span>Example code:</span>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">stringA</span>   <span class="n">BYTE</span> <span class="s">"abcde"</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">stringB</span>   <span class="n">BYTE</span> <span class="s">"xyz"</span><span class="p">,</span> <span class="mi">0</span>
+
+<span class="p">.</span><span class="n">code</span>
+<span class="k">push</span> <span class="n">offset</span> <span class="n">stringA</span>
+<span class="k">push</span> <span class="n">offset</span> <span class="n">stringB</span>
+<span class="k">call</span> <span class="n">Str_compare</span></code></pre></figure>
+
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
+
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="Str_copy">
+      <h2>Str_copy</h2>
+      <div class="procedure-body">
+        <p class="summary">Copy a string.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>PTR BYTE - source string</li>
+            
+              <li>PTR BYTE - target string</li>
+            
+          </ul>
+        </div> <!-- receives -->
+
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>PTR BYTE - target string copied from source</li>
+            
+          </ul>
+        </div> <!-- returns -->
+
+        <div class="example">
+          <span>Example code:</span>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">oldString</span>   <span class="n">BYTE</span> <span class="s">"abcde"</span><span class="p">,</span><span class="mi">0</span>
+<span class="n">newString</span>   <span class="n">BYTE</span> <span class="n">LENGTHOF</span> <span class="n">oldString</span> <span class="n">dup</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="p">.</span><span class="n">code</span>
+<span class="k">push</span> <span class="n">offset</span> <span class="n">newString</span>
+<span class="k">push</span> <span class="n">offset</span> <span class="n">oldString</span>
+<span class="k">call</span> <span class="n">Str_copy</span>           <span class="c">; newString = oldString</span></code></pre></figure>
+
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
+
+    </div><!-- #titleprocedure -->
+  
     <div class="procedure" id="Str_length">
       <h2>Str_length</h2>
       <div class="procedure-body">
@@ -1344,6 +1489,47 @@ mov  intVal,eax</code></pre></figure>
 <span class="k">mov</span>  <span class="n">edx</span><span class="p">,</span><span class="n">OFFSET</span> <span class="n">buffer</span>  <span class="c">; point to string</span>
 <span class="k">call</span> <span class="n">Str_length</span>         <span class="c">; EAX = 5</span>
 <span class="k">mov</span>  <span class="n">bufLength</span><span class="p">,</span><span class="n">eax</span>      <span class="c">; save length</span></code></pre></figure>
+
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
+
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="Str_trim">
+      <h2>Str_trim</h2>
+      <div class="procedure-body">
+        <p class="summary">Removes occurances of a character from the end of a string.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>PTR BYTE - string to trim</li>
+            
+              <li>CHAR - character to remove</li>
+            
+          </ul>
+        </div> <!-- receives -->
+
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>PTR BYTE - trimmed string</li>
+            
+          </ul>
+        </div> <!-- returns -->
+
+        <div class="example">
+          <span>Example code:</span>
+          
+<figure class="highlight"><pre><code class="language-nasm" data-lang="nasm"><span class="p">.</span><span class="n">data</span>
+<span class="n">string</span>   <span class="n">BYTE</span> <span class="s">"abcde###"</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">target</span>   <span class="n">CHAR</span> <span class="sc">'#'</span>
+
+<span class="p">.</span><span class="n">code</span>
+<span class="k">push</span> <span class="n">target</span>
+<span class="k">push</span> <span class="n">offset</span> <span class="n">string</span>
+<span class="k">call</span> <span class="n">Str_trim</span></code></pre></figure>
 
         </div> <!-- example -->
       </div> <!-- procedure-body -->
@@ -1661,6 +1847,99 @@ call WriteInt       ; displays: “+216543”
 
     </div><!-- #titleprocedure -->
   
+    <div class="procedure" id="WriteStackFrame">
+      <h2>WriteStackFrame</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes the stack frame of a procedure.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>DWORD - number of parameters passed</li>
+            
+              <li>DWORD - number of DWORD local variables</li>
+            
+              <li>DWORD - number of saved registers</li>
+            
+          </ul>
+        </div> <!-- receives -->
+
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
+
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
+myProc PROC USES ebx, ecx, edx
+    val:DWORD
+    LOCAL a:DWORD, b:DWORD</p>
+
+<p>.code
+; inside myProc …
+INVOKE WriteStackFrame, 1, 2, 3</p>
+
+<p>{% endhighlight %}</p>
+
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
+
+    </div><!-- #titleprocedure -->
+  
+    <div class="procedure" id="WriteStackFrameName">
+      <h2>WriteStackFrameName</h2>
+      <div class="procedure-body">
+        <p class="summary">Writes the stack frame of a procedure with the procedure name.</h3>
+        <div class="receives">
+          <em>receives: </em>
+          <ul>
+            
+              <li>DWORD - number of parameters passed</li>
+            
+              <li>DWORD - number of DWORD local variables</li>
+            
+              <li>DWORD - number of saved registers</li>
+            
+              <li>PTR BYTE - reference to procedure name</li>
+            
+          </ul>
+        </div> <!-- receives -->
+
+        <div class="returns">
+          <em>returns: </em>
+          <ul>
+            
+              <li>None</li>
+            
+          </ul>
+        </div> <!-- returns -->
+
+        <div class="example">
+          <span>Example code:</span>
+          <p>{% highlight nasm %}
+myProc PROC USES ebx, ecx, edx
+    val:DWORD
+    LOCAL a:DWORD, b:DWORD</p>
+
+<p>.data
+procName BYTE “myProc”, 0</p>
+
+<p>.code
+; inside myProc …
+INVOKE WriteStackFrame, 1, 2, 3, ADDR procName</p>
+
+<p>{% endhighlight %}</p>
+
+        </div> <!-- example -->
+      </div> <!-- procedure-body -->
+
+    </div><!-- #titleprocedure -->
+  
     <div class="procedure" id="WriteString">
       <h2>WriteString</h2>
       <div class="procedure-body">
@@ -1781,6 +2060,6 @@ call WriteWindowsMsg
 </div><!-- procedures -->
   </main>
 
-  <script type="module" src="/irvine/assets/js/script.js"></script>
+  <script type="module" src="/assets/js/script.js"></script>
 </body>
 </html>
